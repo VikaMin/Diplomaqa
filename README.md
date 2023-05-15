@@ -11,8 +11,8 @@ ___________________________________________________
 
 ## Запуск тестов
 По команде через терминал IDE:
-1. для БД MySQL: ./gradlew clean test -Ddb.url=jdbc:mysql://localhost:3306/app
-2. для БД Postgres: ./gradlew clean test "-Durl=jdbc:postgresql://localhost:5432/app
+1. для БД MySQL: ./gradlew clean test "-Ddb.url=jdbc:mysql://localhost:3306/app"
+2. для БД Postgres: ./gradlew clean test "-Durl=jdbc:postgresql://localhost:5432/app"
 
 ## Отчет ALLURE REPORT
 1. Для просмотра результатов запустить в терминале `./gradlew allureServe`
