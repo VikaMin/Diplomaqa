@@ -27,9 +27,10 @@ public class DataGenerator {
     protected static String getInvalidCardNumber() {
         return "1234 1234 1234 1234";
     }
-    protected static String getZeroCardNumber() {
+
+/*   protected static String getZeroCardNumber() {
         return "0000 0000 0000 0000";
-    }
+    }*/
     protected static String getSymbolCardNumber() {
         return "%$#@";
     }
@@ -47,10 +48,7 @@ public class DataGenerator {
         LocalDate newMonth = today.plusMonths(1);
         return new Month(monthFormatter.format(newMonth));
     }
-    protected Month getExpiredMonth() {
-        LocalDate newMonth = today.minusMonths(1);
-        return new Month(monthFormatter.format(newMonth));
-    }
+
     protected Month getInvalidMonth() {
         return new Month("13");
     }
