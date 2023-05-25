@@ -4,7 +4,6 @@ package ru.netology.test;
 import com.codeborne.selenide.Selenide;
 import com.codeborne.selenide.logevents.SelenideLogger;
 import io.qameta.allure.selenide.AllureSelenide;
-import lombok.val;
 import org.junit.jupiter.api.*;
 import ru.netology.data.DataHelper;
 import ru.netology.page.DashboardPage;
@@ -39,8 +38,8 @@ public class CreditCardTest {
     @Test
     @DisplayName("Отправка пустого поля Номер карты")
     void shouldErrorEmptyCardNumber() {
-        val creditCardPage = dashboardPage.payByCreditCard();
-        val emptyCardNum = DataHelper.getEmptyCardNumber();
+        var creditCardPage = dashboardPage.payByCreditCard();
+        var emptyCardNum = DataHelper.getEmptyCardNumber();
         creditCardPage.cardInfo(emptyCardNum);
         creditCardPage.waitIfMessRequiredField();
     }
@@ -48,8 +47,8 @@ public class CreditCardTest {
     @Test
     @DisplayName("Отправка короткого номера карты")
     void shouldErrorNotFullNumber() {
-        val creditCardPage = dashboardPage.payByCreditCard();
-        val notFullCardInformation = DataHelper.getNotFullCardNumber();
+        var creditCardPage = dashboardPage.payByCreditCard();
+        var notFullCardInformation = DataHelper.getNotFullCardNumber();
         creditCardPage.cardInfo(notFullCardInformation);
         creditCardPage.waitIfMessWrongFormat();
     }
@@ -57,8 +56,8 @@ public class CreditCardTest {
     @Test
     @DisplayName("Отправка несуществующего номера карты банка")
     void shouldErrorPayByNumber() {
-        val creditCardPage = dashboardPage.payByCreditCard();
-        val invalidCardNumber = DataHelper.getInvalidCardNumber();
+        var creditCardPage = dashboardPage.payByCreditCard();
+        var invalidCardNumber = DataHelper.getInvalidCardNumber();
         creditCardPage.cardInfo(invalidCardNumber);
         creditCardPage.waitIfMessFail();
     }
@@ -66,8 +65,8 @@ public class CreditCardTest {
     @Test
     @DisplayName("Отправка символьных значений в поле Номер карты")
     void shouldErrorSymbolNumber() {
-        val creditCardPage = dashboardPage.payByCreditCard();
-        val symbolCardNumber = DataHelper.getSymbolCardNumber();
+        var creditCardPage = dashboardPage.payByCreditCard();
+        var symbolCardNumber = DataHelper.getSymbolCardNumber();
         creditCardPage.cardInfo(symbolCardNumber);
         creditCardPage.waitIfMessRequiredField();
     }
@@ -75,8 +74,8 @@ public class CreditCardTest {
     @Test
     @DisplayName("Отправка букв в поле Номер карты")
     void shouldErrorLetterCardNumber() {
-        val creditCardPage = dashboardPage.payByCreditCard();
-        val letterCardNumber = DataHelper.getLetterCardNumber();
+        var creditCardPage = dashboardPage.payByCreditCard();
+        var letterCardNumber = DataHelper.getLetterCardNumber();
         creditCardPage.cardInfo(letterCardNumber);
         creditCardPage.waitIfMessRequiredField();
     }
@@ -88,8 +87,8 @@ public class CreditCardTest {
     @Test
     @DisplayName("Отправка пустого поля месяц")
     void shouldErrorEmptyMonth() {
-        val creditCardPage = dashboardPage.payByCreditCard();
-        val emptyMonth = DataHelper.getEmptyMonth();
+        var creditCardPage = dashboardPage.payByCreditCard();
+        var emptyMonth = DataHelper.getEmptyMonth();
         creditCardPage.cardInfo(emptyMonth);
         creditCardPage.waitIfMessRequiredField();
     }
@@ -97,8 +96,8 @@ public class CreditCardTest {
     @Test
     @DisplayName("Отправка значения 00 в поле месяц")
     void shouldErrorZeroMonth() {
-        val creditCardPage = dashboardPage.payByCreditCard();
-        val zeroMonth = DataHelper.getZeroMonth();
+        var creditCardPage = dashboardPage.payByCreditCard();
+        var zeroMonth = DataHelper.getZeroMonth();
         creditCardPage.cardInfo(zeroMonth);
         creditCardPage.waitIfMessWrongFormat();
     }
@@ -106,8 +105,8 @@ public class CreditCardTest {
     @Test
     @DisplayName("Отправка нерелевантного значения, больше 12 в поле месяц")
     void shouldErrorInvalidMonth() {
-        val creditCardPage = dashboardPage.payByCreditCard();
-        val invalidMonth = DataHelper.getInvalidMonth();
+        var creditCardPage = dashboardPage.payByCreditCard();
+        var invalidMonth = DataHelper.getInvalidMonth();
         creditCardPage.cardInfo(invalidMonth);
 
         creditCardPage.waitIfMessWrongTerm();
@@ -116,8 +115,8 @@ public class CreditCardTest {
     @Test
     @DisplayName("Отправка символьных значений в поле месяц")
     void shouldErrorSymbolMonth() {
-        val creditCardPage = dashboardPage.payByCreditCard();
-        val symbolMonth = DataHelper.getSymbolMonth();
+        var creditCardPage = dashboardPage.payByCreditCard();
+        var symbolMonth = DataHelper.getSymbolMonth();
         creditCardPage.cardInfo(symbolMonth);
         creditCardPage.waitIfMessRequiredField();
     }
@@ -125,8 +124,8 @@ public class CreditCardTest {
     @Test
     @DisplayName("Отправка букв в поле месяц")
     void shouldErrorLetterMonth() {
-        val creditCardPage = dashboardPage.payByCreditCard();
-        val letterMonth = DataHelper.getLetterMonth();
+        var creditCardPage = dashboardPage.payByCreditCard();
+        var letterMonth = DataHelper.getLetterMonth();
         creditCardPage.cardInfo(letterMonth);
         creditCardPage.waitIfMessRequiredField();
     }
@@ -137,8 +136,8 @@ public class CreditCardTest {
     @Test
     @DisplayName("Отправка пустого поля год")
     void shouldErrorEmptyYear() {
-        val creditCardPage = dashboardPage.payByCreditCard();
-        val emptyYear = DataHelper.getEmptyYear();
+        var creditCardPage = dashboardPage.payByCreditCard();
+        var emptyYear = DataHelper.getEmptyYear();
         creditCardPage.cardInfo(emptyYear);
         creditCardPage.waitIfMessRequiredField();
     }
@@ -146,8 +145,8 @@ public class CreditCardTest {
     @Test
     @DisplayName("Отправка значения меньше текущего года")
     void shouldErrorExpiredYear() {
-        val creditCardPage = dashboardPage.payByCreditCard();
-        val expiredYear = DataHelper.getExpiredYear();
+        var creditCardPage = dashboardPage.payByCreditCard();
+        var expiredYear = DataHelper.getExpiredYear();
         creditCardPage.cardInfo(expiredYear);
 
         creditCardPage.waitIfMessCardExpired();
@@ -156,8 +155,8 @@ public class CreditCardTest {
     @Test
     @DisplayName("Отправка значения большего текущего года на 3")
     void shouldErrorLotsFutureYear() {
-        val creditCardPage = dashboardPage.payByCreditCard();
-        val lotsFutureYear = DataHelper.getLotsFutureYear();
+        var creditCardPage = dashboardPage.payByCreditCard();
+        var lotsFutureYear = DataHelper.getLotsFutureYear();
         creditCardPage.cardInfo(lotsFutureYear);
 
         creditCardPage.waitIfMessWrongTerm();
@@ -166,8 +165,8 @@ public class CreditCardTest {
     @Test
     @DisplayName("Отправка значения менее 2 цифр в поле год")
     void shouldErrorShortYear() {
-        val creditCardPage = dashboardPage.payByCreditCard();
-        val shortYear = DataHelper.getShortYear();
+        var creditCardPage = dashboardPage.payByCreditCard();
+        var shortYear = DataHelper.getShortYear();
         creditCardPage.cardInfo(shortYear);
         creditCardPage.waitIfMessWrongFormat();
     }
@@ -175,8 +174,8 @@ public class CreditCardTest {
     @Test
     @DisplayName("Отправка символьных значений в поле год")
     void shouldErrorSymbolYear() {
-        val creditCardPage = dashboardPage.payByCreditCard();
-        val symbolYear = DataHelper.getSymbolYear();
+        var creditCardPage = dashboardPage.payByCreditCard();
+        var symbolYear = DataHelper.getSymbolYear();
         creditCardPage.cardInfo(symbolYear);
         creditCardPage.waitIfMessRequiredField();
     }
@@ -184,8 +183,8 @@ public class CreditCardTest {
     @Test
     @DisplayName("Отправка букв в поле год")
     void shouldErrorLetterYear() {
-        val creditCardPage = dashboardPage.payByCreditCard();
-        val letterYear = DataHelper.getLetterYear();
+        var creditCardPage = dashboardPage.payByCreditCard();
+        var letterYear = DataHelper.getLetterYear();
         creditCardPage.cardInfo(letterYear);
         creditCardPage.waitIfMessRequiredField();
     }
@@ -196,8 +195,8 @@ public class CreditCardTest {
     @Test
     @DisplayName("Отправка пустого поля владелец")
     void shouldErrorEmptyOwner() {
-        val creditCardPage = dashboardPage.payByCreditCard();
-        val emptyOwner = DataHelper.getEmptyOwner();
+        var creditCardPage = dashboardPage.payByCreditCard();
+        var emptyOwner = DataHelper.getEmptyOwner();
         creditCardPage.cardInfo(emptyOwner);
         creditCardPage.waitIfMessRequiredField();
     }
@@ -205,8 +204,8 @@ public class CreditCardTest {
     @Test
     @DisplayName("Отправка трех и более слов латинскими буквами в поле владелец")
     void shouldErrorThreeWordsOwner() {
-        val creditCardPage = dashboardPage.payByCreditCard();
-        val threeWordsOwner = DataHelper.getThreeWordsOwner();
+        var creditCardPage = dashboardPage.payByCreditCard();
+        var threeWordsOwner = DataHelper.getThreeWordsOwner();
         creditCardPage.cardInfo(threeWordsOwner);
         creditCardPage.waitIfMessWrongFormat();
     }
@@ -214,8 +213,8 @@ public class CreditCardTest {
     @Test
     @DisplayName("Отправка символьных значений в поле владелец")
     void shouldErrorSymbolOwner() {
-        val creditCardPage = dashboardPage.payByCreditCard();
-        val symbolOwner = DataHelper.getSymbolOwner();
+        var creditCardPage = dashboardPage.payByCreditCard();
+        var symbolOwner = DataHelper.getSymbolOwner();
         creditCardPage.cardInfo(symbolOwner);
         creditCardPage.waitIfMessRequiredField();
     }
@@ -223,8 +222,8 @@ public class CreditCardTest {
     @Test
     @DisplayName("Отправка слов кириллицей в поле владелец")
     void shouldErrorInvalidRuOwner() {
-        val creditCardPage = dashboardPage.payByCreditCard();
-        val invalidRuOwner = DataHelper.getInvalidRuOwner();
+        var creditCardPage = dashboardPage.payByCreditCard();
+        var invalidRuOwner = DataHelper.getInvalidRuOwner();
         creditCardPage.cardInfo(invalidRuOwner);
         creditCardPage.waitIfMessRequiredField();
     }
@@ -232,8 +231,8 @@ public class CreditCardTest {
     @Test
     @DisplayName("Отправка чисел в поле владелец")
     void shouldErrorNumbersOwner() {
-        val creditCardPage = dashboardPage.payByCreditCard();
-        val invalidNumbersOwner = DataHelper.getInvalidNumbersOwner();
+        var creditCardPage = dashboardPage.payByCreditCard();
+        var invalidNumbersOwner = DataHelper.getInvalidNumbersOwner();
         creditCardPage.cardInfo(invalidNumbersOwner);
         creditCardPage.waitIfMessRequiredField();
     }
@@ -244,8 +243,8 @@ public class CreditCardTest {
     @Test
     @DisplayName("Отправка пустого поля Cvc")
     void shouldErrorEmptyCvc() {
-        val creditCardPage = dashboardPage.payByCreditCard();
-        val emptyCvc = DataHelper.getEmptyCvc();
+        var creditCardPage = dashboardPage.payByCreditCard();
+        var emptyCvc = DataHelper.getEmptyCvc();
         creditCardPage.cardInfo(emptyCvc);
         creditCardPage.waitIfMessRequiredField();
     }
@@ -253,8 +252,8 @@ public class CreditCardTest {
     @Test
     @DisplayName("Отправка 2 цифр в поле Cvc")
     void shouldErrorTwoDigitsCvc() {
-        val creditCardPage = dashboardPage.payByCreditCard();
-        val twoDigitsCvc = DataHelper.getTwoDigitsCvc();
+        var creditCardPage = dashboardPage.payByCreditCard();
+        var twoDigitsCvc = DataHelper.getTwoDigitsCvc();
         creditCardPage.cardInfo(twoDigitsCvc);
         creditCardPage.waitIfMessWrongFormat();
     }
@@ -263,8 +262,8 @@ public class CreditCardTest {
     @Test
     @DisplayName("Отправка 4 цифр в поле Cvc")
     void shouldErrorFourDigitsCvc() {
-        val creditCardPage = dashboardPage.payByCreditCard();
-        val fourDigitsCvc = DataHelper.getFourDigitsCvc();
+        var creditCardPage = dashboardPage.payByCreditCard();
+        var fourDigitsCvc = DataHelper.getFourDigitsCvc();
         creditCardPage.cardInfo(fourDigitsCvc);
         creditCardPage.waitIfMessFail();
     }
@@ -272,8 +271,8 @@ public class CreditCardTest {
     @Test
     @DisplayName("Отправка символьных значений в поле Cvc")
     void shouldErrorSymbolCvc() {
-        val creditCardPage = dashboardPage.payByCreditCard();
-        val fourSymbolCvc = DataHelper.getSymbolCvc();
+        var creditCardPage = dashboardPage.payByCreditCard();
+        var fourSymbolCvc = DataHelper.getSymbolCvc();
         creditCardPage.cardInfo(fourSymbolCvc);
         creditCardPage.waitIfMessRequiredField();
     }
@@ -281,8 +280,8 @@ public class CreditCardTest {
     @Test
     @DisplayName("Отправка букв в поле Cvc")
     void shouldErrorLettersCvc() {
-        val creditCardPage = dashboardPage.payByCreditCard();
-        val fourLettersCvc = DataHelper.getLettersCvc();
+        var creditCardPage = dashboardPage.payByCreditCard();
+        var fourLettersCvc = DataHelper.getLettersCvc();
         creditCardPage.cardInfo(fourLettersCvc);
         creditCardPage.waitIfMessRequiredField();
     }
@@ -291,8 +290,8 @@ public class CreditCardTest {
     @Test
     @DisplayName("Отправка пустой формы")
     void shouldNotSendEmptyForm() {
-        val creditCardPage = dashboardPage.payByCreditCard();
-        val emptyForm = DataHelper.getEmptyCardInfo();
+        var creditCardPage = dashboardPage.payByCreditCard();
+        var emptyForm = DataHelper.getEmptyCardInfo();
         creditCardPage.cardInfo(emptyForm);
         creditCardPage.waitIfMessRequiredField();
         creditCardPage.waitIfMessRequiredField();
@@ -302,3 +301,4 @@ public class CreditCardTest {
     }
 
 }
+

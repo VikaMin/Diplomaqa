@@ -1,6 +1,6 @@
 plugins {
     id 'java'
-//    id 'io.freefair.lombok' version '5.3.0'
+    id 'io.freefair.lombok' version '6.4.3'
     id 'io.qameta.allure' version '2.9.6'
 }
 
@@ -35,17 +35,12 @@ repositories {
 dependencies {
     testImplementation 'org.junit.jupiter:junit-jupiter-api:5.9.2'
     testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.9.2'
-    testImplementation 'com.codeborne:selenide:5.3.1'
-    testRuntimeOnly 'org.slf4j:slf4j-simple:2.0.5'
+    testImplementation 'com.codeborne:selenide:5.13.0'
+    testImplementation 'org.projectlombok:lombok:1.18.26'
     testImplementation 'mysql:mysql-connector-java:8.0.32'
     testImplementation 'org.postgresql:postgresql:42.5.4'
     testImplementation 'commons-dbutils:commons-dbutils:1.7'
-    testImplementation 'io.rest-assured:rest-assured:5.3.0'
     testImplementation 'io.qameta.allure:allure-selenide:2.21.0'
-    compileOnly 'org.projectlombok:lombok:1.18.24'
-    annotationProcessor 'org.projectlombok:lombok:1.18.24'
-    testCompileOnly 'org.projectlombok:lombok:1.18.24'
-    testAnnotationProcessor 'org.projectlombok:lombok:1.18.24'
     implementation 'com.github.javafaker:javafaker:1.0.2'
 
 }
@@ -55,8 +50,7 @@ test {
     useJUnitPlatform()
     testLogging.showStandardStreams = true
     systemProperty 'selenide.headless', System.getProperty('selenide.headless')
-    systemProperty 'junit.jupiter.extensions.autodetection.enabled', true
-    systemProperty 'url', System.getProperty('url')
+    systemProperty 'url', System.getProperty('url', 'jdbc:mysql://localhost:3306/app')
     systemProperty 'username', System.getProperty('username', 'app')
     systemProperty 'password', System.getProperty('password', 'pass')
     systemProperty 'sut.url', System.getProperty('sut.url', "http://localhost:8080/")

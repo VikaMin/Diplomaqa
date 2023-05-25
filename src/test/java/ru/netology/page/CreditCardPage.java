@@ -37,9 +37,7 @@ public class CreditCardPage {
         continueButton.click();
     }
 
-    public void waitIfMessSuccess() {
-        successNotification.waitUntil(visible, 15000);
-    }
+    public void waitIfMessSuccess() { successNotification.waitUntil(visible, 15000); }
 
     public void waitIfMessFail() {
         failNotification.waitUntil(visible, 15000);

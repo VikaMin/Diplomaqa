@@ -41,44 +41,44 @@ public class HappyTest {
     @Test
     @DisplayName("Успешная оплата тура картой, статус Approved")
     void shouldPaymentPayByAppDC() {
-        val paymentCardPage = dashboardPage.payByPaymentCard();
-        val approvedCardInformation = DataHelper.getApprovedCardInfo();
+        var paymentCardPage = dashboardPage.payByPaymentCard();
+        var approvedCardInformation = DataHelper.getApprovedCardInfo();
         paymentCardPage.cardInfo(approvedCardInformation);
         paymentCardPage.waitIfMessSuccess();
-        val paymentStatus = SqlHelper.getPaymentEntity();
+        var paymentStatus = SqlHelper.getPaymentEntity();
         assertEquals("APPROVED", paymentStatus);
     }
 
     @Test
     @DisplayName("Отказ оплаты тура картой, статус Declined")
     void shouldPaymentPayNotByDecDC() {
-        val paymentCardPage = dashboardPage.payByPaymentCard();
-        val declinedCardInformation = DataHelper.getDeclinedCardInfo();
+        var paymentCardPage = dashboardPage.payByPaymentCard();
+        var declinedCardInformation = DataHelper.getDeclinedCardInfo();
         paymentCardPage.cardInfo(declinedCardInformation);
         paymentCardPage.waitIfMessFail();
-        val paymentStatus = SqlHelper.getPaymentEntity();
+        var paymentStatus = SqlHelper.getPaymentEntity();
         assertEquals("DECLINED", paymentStatus);
     }
 
     @Test
     @DisplayName("Успешная оплата тура в кредит по данным карты, статус Approved")
     void shouldCreditPaymentPayByAppDC() {
-        val creditCardPage = dashboardPage.payByCreditCard();
-        val approvedCardInformation = DataHelper.getApprovedCardInfo();
+        var creditCardPage = dashboardPage.payByCreditCard();
+        var approvedCardInformation = DataHelper.getApprovedCardInfo();
         creditCardPage.cardInfo(approvedCardInformation);
         creditCardPage.waitIfMessSuccess();
-        val paymentStatus = SqlHelper.getCreditEntity();
+        var paymentStatus = SqlHelper.getCreditEntity();
         assertEquals("APPROVED", paymentStatus);
     }
 
     @Test
     @DisplayName("Отказ оплаты тура в кредит по данным карты, статус Declined")
     void shouldCreditPayNotByDecDC() {
-        val creditCardPage = dashboardPage.payByCreditCard();
-        val declinedCardInformation = DataHelper.getDeclinedCardInfo();
+        var creditCardPage = dashboardPage.payByCreditCard();
+        var declinedCardInformation = DataHelper.getDeclinedCardInfo();
         creditCardPage.cardInfo(declinedCardInformation);
         creditCardPage.waitIfMessFail();
-        val paymentStatus = SqlHelper.getCreditEntity();
+        var paymentStatus = SqlHelper.getCreditEntity();
         assertEquals("DECLINED", paymentStatus);
     }
 
