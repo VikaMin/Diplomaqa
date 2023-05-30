@@ -1,8 +1,6 @@
 package ru.netology.data;
 import lombok.Value;
 
-
-
 public class DataHelper {
 
 
@@ -20,49 +18,49 @@ public class DataHelper {
     // Позитивные сценарии
 
     public static CardInfo getApprovedCardInfo() {
-        return new CardInfo(DataGenerator.getApprovedCardNumber(), DataGenerator.getValidExpirationDate(), DataGenerator.getValidMonth(), DataGenerator.getValidOwner(), DataGenerator.getValidCvc());
+        return new CardInfo(DataGenerator.getApprovedCardNumber(), DataGenerator.getCurrentYear(1), DataGenerator.getValidMonth(), DataGenerator.getValidOwner(), DataGenerator.getValidCvc());
     }
 
     public static CardInfo getDeclinedCardInfo() {
-        return new CardInfo(DataGenerator.getDeclinedCardNumber(), DataGenerator.getValidExpirationDate(), DataGenerator.getValidMonth(), DataGenerator.getValidOwner(), DataGenerator.getValidCvc());
+        return new CardInfo(DataGenerator.getDeclinedCardNumber(), DataGenerator.getCurrentYear(1), DataGenerator.getValidMonth(), DataGenerator.getValidOwner(), DataGenerator.getValidCvc());
     }
 
     // Поле Номер карты
 
     public static CardInfo getEmptyCardNumber() {
-        return new CardInfo(" ", DataGenerator.getCurrentYear(), DataGenerator.getValidMonth(), DataGenerator.getValidOwner(), DataGenerator.getValidCvc());
+        return new CardInfo(" ", DataGenerator.getCurrentYear(0), DataGenerator.getValidMonth(), DataGenerator.getValidOwner(), DataGenerator.getValidCvc());
     }
     public static CardInfo getNotFullCardNumber() {
-        return new CardInfo(DataGenerator.getNotFullCardNumber(), DataGenerator.getValidExpirationDate(), DataGenerator.getValidMonth(), DataGenerator.getValidOwner(), DataGenerator.getValidCvc());
+        return new CardInfo(DataGenerator.getNotFullCardNumber(), DataGenerator.getCurrentYear(1), DataGenerator.getValidMonth(), DataGenerator.getValidOwner(), DataGenerator.getValidCvc());
     }
     public static CardInfo getInvalidCardNumber() {
-        return new CardInfo(DataGenerator.getInvalidCardNumber(), DataGenerator.getValidExpirationDate(), DataGenerator.getValidMonth(), DataGenerator.getValidOwner(), DataGenerator.getValidCvc());
+        return new CardInfo(DataGenerator.getInvalidCardNumber(), DataGenerator.getCurrentYear(1), DataGenerator.getValidMonth(), DataGenerator.getValidOwner(), DataGenerator.getValidCvc());
     }
     public static CardInfo getSymbolCardNumber() {
-        return new CardInfo(DataGenerator.getSymbolCardNumber(), DataGenerator.getValidExpirationDate(), DataGenerator.getValidMonth(), DataGenerator.getValidOwner(), DataGenerator.getValidCvc());
+        return new CardInfo(DataGenerator.getSymbolCardNumber(), DataGenerator.getCurrentYear(1), DataGenerator.getValidMonth(), DataGenerator.getValidOwner(), DataGenerator.getValidCvc());
     }
     public static CardInfo getLetterCardNumber() {
-        return new CardInfo(DataGenerator.getLetterCardNumber(), DataGenerator.getValidExpirationDate(), DataGenerator.getValidMonth(), DataGenerator.getValidOwner(), DataGenerator.getValidCvc());
+        return new CardInfo(DataGenerator.getLetterCardNumber(), DataGenerator.getCurrentYear(1), DataGenerator.getValidMonth(), DataGenerator.getValidOwner(), DataGenerator.getValidCvc());
     }
 
     // Поле Месяц
 
     public static CardInfo getEmptyMonth() {
-        return new CardInfo(DataGenerator.getApprovedCardNumber(), DataGenerator.getCurrentYear(), "", DataGenerator.getValidOwner(), DataGenerator.getValidCvc());
+        return new CardInfo(DataGenerator.getApprovedCardNumber(), DataGenerator.getCurrentYear(0), "", DataGenerator.getValidOwner(), DataGenerator.getValidCvc());
     }
 
     public static CardInfo getZeroMonth() {
-        return new CardInfo(DataGenerator.getApprovedCardNumber(), DataGenerator.getCurrentYear(), DataGenerator.getZeroMonth(), DataGenerator.getValidOwner(), DataGenerator.getValidCvc());
+        return new CardInfo(DataGenerator.getApprovedCardNumber(), DataGenerator.getCurrentYear(0), DataGenerator.getZeroMonth(), DataGenerator.getValidOwner(), DataGenerator.getValidCvc());
     }
 
     public static CardInfo getInvalidMonth() {
-        return new CardInfo(DataGenerator.getApprovedCardNumber(), DataGenerator.getCurrentYear(), DataGenerator.getInvalidMonth(), DataGenerator.getValidOwner(), DataGenerator.getValidCvc());
+        return new CardInfo(DataGenerator.getApprovedCardNumber(), DataGenerator.getCurrentYear(0), DataGenerator.getInvalidMonth(), DataGenerator.getValidOwner(), DataGenerator.getValidCvc());
     }
     public static CardInfo getSymbolMonth() {
-        return new CardInfo(DataGenerator.getApprovedCardNumber(), DataGenerator.getCurrentYear(), DataGenerator.getSymbol(), DataGenerator.getValidOwner(), DataGenerator.getValidCvc());
+        return new CardInfo(DataGenerator.getApprovedCardNumber(), DataGenerator.getCurrentYear(0), DataGenerator.getSymbol(), DataGenerator.getValidOwner(), DataGenerator.getValidCvc());
     }
     public static CardInfo getLetterMonth() {
-        return new CardInfo(DataGenerator.getApprovedCardNumber(), DataGenerator.getCurrentYear(), DataGenerator.getLetter(), DataGenerator.getValidOwner(), DataGenerator.getValidCvc());
+        return new CardInfo(DataGenerator.getApprovedCardNumber(), DataGenerator.getCurrentYear(0), DataGenerator.getLetter(), DataGenerator.getValidOwner(), DataGenerator.getValidCvc());
     }
 
     /*Поле Год*/
@@ -72,11 +70,11 @@ public class DataHelper {
     }
 
     public static CardInfo getExpiredYear() {
-        return new CardInfo(DataGenerator.getApprovedCardNumber(), DataGenerator.getExpiredYear(), DataGenerator.getValidMonth(), DataGenerator.getValidOwner(), DataGenerator.getValidCvc());
+        return new CardInfo(DataGenerator.getApprovedCardNumber(), DataGenerator.getCurrentYear(-1), DataGenerator.getValidMonth(), DataGenerator.getValidOwner(), DataGenerator.getValidCvc());
     }
 
     public static CardInfo getLotsFutureYear() {
-        return new CardInfo(DataGenerator.getApprovedCardNumber(), DataGenerator.getLotsFutureYear(), DataGenerator.getValidMonth(), DataGenerator.getValidOwner(), DataGenerator.getValidCvc());
+        return new CardInfo(DataGenerator.getApprovedCardNumber(), DataGenerator.getCurrentYear(4), DataGenerator.getValidMonth(), DataGenerator.getValidOwner(), DataGenerator.getValidCvc());
     }
 
     public static CardInfo getShortYear() {
@@ -94,49 +92,48 @@ public class DataHelper {
     /*Поле Владелец*/
 
     public static CardInfo getEmptyOwner() {
-        return new CardInfo(DataGenerator.getApprovedCardNumber(), DataGenerator.getCurrentYear(), DataGenerator.getValidMonth(), "", DataGenerator.getValidCvc());
+        return new CardInfo(DataGenerator.getApprovedCardNumber(), DataGenerator.getCurrentYear(0), DataGenerator.getValidMonth(), "", DataGenerator.getValidCvc());
     }
 
     public static CardInfo getThreeWordsOwner() {
-        return new CardInfo(DataGenerator.getApprovedCardNumber(), DataGenerator.getValidExpirationDate(), DataGenerator.getValidMonth(), DataGenerator.getInvalidThreeWordsOwner(), DataGenerator.getValidCvc());
+        return new CardInfo(DataGenerator.getApprovedCardNumber(), DataGenerator.getCurrentYear(1), DataGenerator.getValidMonth(), DataGenerator.getInvalidThreeWordsOwner(), DataGenerator.getValidCvc());
     }
 
     public static CardInfo getSymbolOwner() {
-        return new CardInfo(DataGenerator.getApprovedCardNumber(), DataGenerator.getValidExpirationDate(), DataGenerator.getValidMonth(), DataGenerator.getInvalidSymbolOwner(), DataGenerator.getValidCvc());
+        return new CardInfo(DataGenerator.getApprovedCardNumber(), DataGenerator.getCurrentYear(1), DataGenerator.getValidMonth(), DataGenerator.getInvalidSymbolOwner(), DataGenerator.getValidCvc());
     }
 
     public static CardInfo getInvalidRuOwner() {
-        return new CardInfo(DataGenerator.getApprovedCardNumber(), DataGenerator.getValidExpirationDate(), DataGenerator.getValidMonth(), DataGenerator.getInvalidRuOwner(), DataGenerator.getValidCvc());
+        return new CardInfo(DataGenerator.getApprovedCardNumber(), DataGenerator.getCurrentYear(1), DataGenerator.getValidMonth(), DataGenerator.getInvalidRuOwner(), DataGenerator.getValidCvc());
     }
 
     public static CardInfo getInvalidNumbersOwner() {
-        return new CardInfo(DataGenerator.getApprovedCardNumber(), DataGenerator.getValidExpirationDate(), DataGenerator.getValidMonth(), DataGenerator.getInvalidNumbersOwner(), DataGenerator.getValidCvc());
+        return new CardInfo(DataGenerator.getApprovedCardNumber(), DataGenerator.getCurrentYear(1), DataGenerator.getValidMonth(), DataGenerator.getInvalidNumbersOwner(), DataGenerator.getValidCvc());
     }
 
     /*Поле CVC/CVV*/
 
     public static CardInfo getEmptyCvc() {
-        return new CardInfo(DataGenerator.getApprovedCardNumber(), DataGenerator.getValidExpirationDate(), DataGenerator.getValidMonth(), DataGenerator.getValidOwner(), "");
+        return new CardInfo(DataGenerator.getApprovedCardNumber(), DataGenerator.getCurrentYear(1), DataGenerator.getValidMonth(), DataGenerator.getValidOwner(), "");
     }
     public static CardInfo getTwoDigitsCvc() {
-        return new CardInfo(DataGenerator.getApprovedCardNumber(), DataGenerator.getValidExpirationDate(), DataGenerator.getValidMonth(), DataGenerator.getValidOwner(), DataGenerator.getTwoDigitsCvc());
+        return new CardInfo(DataGenerator.getApprovedCardNumber(), DataGenerator.getCurrentYear(1), DataGenerator.getValidMonth(), DataGenerator.getValidOwner(), DataGenerator.getTwoDigitsCvc());
     }
 
     public static CardInfo getFourDigitsCvc() {
-        return new CardInfo(DataGenerator.getApprovedCardNumber(), DataGenerator.getValidExpirationDate(), DataGenerator.getValidMonth(), DataGenerator.getValidOwner(), DataGenerator.getFourDigitsCvc());
+        return new CardInfo(DataGenerator.getApprovedCardNumber(), DataGenerator.getCurrentYear(1), DataGenerator.getValidMonth(), DataGenerator.getValidOwner(), DataGenerator.getFourDigitsCvc());
     }
     public static CardInfo getSymbolCvc() {
-        return new CardInfo(DataGenerator.getApprovedCardNumber(), DataGenerator.getValidExpirationDate(), DataGenerator.getValidMonth(), DataGenerator.getValidOwner(), DataGenerator.getSymbolCvc());
+        return new CardInfo(DataGenerator.getApprovedCardNumber(), DataGenerator.getCurrentYear(1), DataGenerator.getValidMonth(), DataGenerator.getValidOwner(), DataGenerator.getSymbolCvc());
     }
     public static CardInfo getLettersCvc() {
-        return new CardInfo(DataGenerator.getApprovedCardNumber(), DataGenerator.getValidExpirationDate(), DataGenerator.getValidMonth(), DataGenerator.getValidOwner(), DataGenerator.getLettersCvc());
+        return new CardInfo(DataGenerator.getApprovedCardNumber(), DataGenerator.getCurrentYear(1), DataGenerator.getValidMonth(), DataGenerator.getValidOwner(), DataGenerator.getLettersCvc());
     }
 
     // Пустая форма
     public static CardInfo getEmptyCardInfo() {
         return new CardInfo(" ", " ", " ", " ", " ");
     }
-
 
 }
 

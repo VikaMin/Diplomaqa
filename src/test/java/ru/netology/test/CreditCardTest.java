@@ -26,7 +26,7 @@ public class CreditCardTest {
     }
 
     @AfterAll
-    static void tearDownAll() {
+    void tearDownAll() {
         SelenideLogger.removeListener("allure");
         SqlHelper.cleanDataBase();
     }

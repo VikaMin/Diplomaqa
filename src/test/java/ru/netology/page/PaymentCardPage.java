@@ -1,7 +1,10 @@
 package ru.netology.page;
 
+import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.SelenideElement;
 import ru.netology.data.DataHelper;
+
+import java.time.Duration;
 
 import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selectors.byText;
@@ -40,30 +43,17 @@ public class PaymentCardPage {
         continueButton.click();
     }
 
-    public void waitIfMessSuccess() {
-        successNotification.waitUntil(visible, 15000);
-    }
+    public void waitIfMessSuccess() { successNotification.shouldBe(Condition.visible, Duration.ofMillis(15000)); }
 
-    public void waitIfMessFail() {
-        failNotification.waitUntil(visible, 15000);
-    }
+    public void waitIfMessFail() { failNotification.shouldBe(Condition.visible, Duration.ofMillis(15000)); }
 
-    public void waitIfMessRequiredField() {
-        messRequiredField.waitUntil(visible, 10000);
-    }
+    public void waitIfMessRequiredField() { messRequiredField.shouldBe(Condition.visible); }
 
-    public void waitIfMessWrongFormat() {
-        messWrongFormat.waitUntil(visible, 10000);
-    }
+    public void waitIfMessWrongFormat() { messWrongFormat.shouldBe(Condition.visible); }
 
-    public void waitIfMessWrongTerm() {
-        messWrongTerm.waitUntil(visible, 10000);
-    }
+    public void waitIfMessWrongTerm() { messWrongTerm.shouldBe(Condition.visible); }
 
-    public void waitIfMessCardExpired() {
-        messCardExpired.waitUntil(visible, 10000);
-    }
-
+    public void waitIfMessCardExpired() { messCardExpired.shouldBe(Condition.visible); }
 
 }
 

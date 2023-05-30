@@ -9,9 +9,9 @@ public class SqlHelper {
 
     @SneakyThrows
     public static Connection getConn() {
-        String url = System.getProperty("url","jdbc:mysql://localhost:3306/app");
-        String username = System.getProperty("username");
-        String password = System.getProperty("password");
+        var url = System.getProperty("url","jdbc:mysql://localhost:3306/app");
+        var username = System.getProperty("username");
+        var password = System.getProperty("password");
         return DriverManager.getConnection(url, username, password);
 
     }
@@ -31,7 +31,7 @@ public class SqlHelper {
     }
 
     @SneakyThrows
-    public static String getPaymentEntity() {
+    public static String getPaymentStatus() {
         var conn = getConn();
         var countStmt = conn.createStatement();
         var paymentStatus = "SELECT status FROM payment_entity ORDER BY created DESC LIMIT 1;";
@@ -41,7 +41,7 @@ public class SqlHelper {
     }
 
     @SneakyThrows
-    public static String getCreditEntity() {
+    public static String getCreditStatus() {
         var conn = getConn();
         var countStmt = conn.createStatement();
         var creditStatus = "SELECT status FROM credit_request_entity ORDER BY created DESC LIMIT 1;";

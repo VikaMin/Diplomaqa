@@ -1,5 +1,6 @@
 package ru.netology.data;
 import com.github.javafaker.Faker;
+
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.Locale;
@@ -27,10 +28,7 @@ public class DataGenerator {
 
     /*Поле Год*/
 
-    static String getCurrentYear() { return LocalDate.now().format(DateTimeFormatter.ofPattern("yy")); }
-    static String getValidExpirationDate() { return LocalDate.now().plusYears(1).format(DateTimeFormatter.ofPattern("yy")); }
-    static String getExpiredYear() { return LocalDate.now().minusYears(1).format(DateTimeFormatter.ofPattern("yy")); }
-    static String getLotsFutureYear() { return LocalDate.now().plusYears(4).format(DateTimeFormatter.ofPattern("yy")); }
+    static String getCurrentYear(int year) { return LocalDate.now().plusYears(year).format(DateTimeFormatter.ofPattern("yy")); }
     static String getShortYear() { return "2"; }
 
 
