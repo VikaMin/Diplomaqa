@@ -10,11 +10,10 @@ import ru.netology.page.DashboardPage;
 import static com.codeborne.selenide.Selenide.*;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class ValidPaymentTest {
+public class PositiveTest {
 
 
     DashboardPage dashboardPage = new DashboardPage();
-
 
     @BeforeEach
     void setup() {
@@ -23,10 +22,10 @@ public class ValidPaymentTest {
         Selenide.clearBrowserLocalStorage();
     }
 
-
     @BeforeAll
-    static void setUpAll() { SelenideLogger.addListener("allure", new AllureSelenide()); }
-
+    static void setUpAll() {
+        SelenideLogger.addListener("allure", new AllureSelenide());
+    }
 
     @AfterAll
     static void tearDownAll() {
@@ -39,12 +38,13 @@ public class ValidPaymentTest {
     @DisplayName("Успешная оплата тура картой, статус Approved")
     void shouldPaymentPayByAppDC() {
         var paymentCardPage = dashboardPage.payByPaymentCard();
-        var approvedCardInformation = DataHelper.getApprovedCardInfo();
+        var approvedCardInformation = DataHelper.getValidCard();
         paymentCardPage.cardInfo(approvedCardInformation);
         paymentCardPage.waitIfMessSuccess();
         var paymentStatus = SqlHelper.getPaymentStatus();
         assertEquals("APPROVED", paymentStatus);
     }
+
 
     @Test
     @DisplayName("Отказ оплаты тура картой, статус Declined")
@@ -61,7 +61,7 @@ public class ValidPaymentTest {
     @DisplayName("Успешная оплата тура в кредит по данным карты, статус Approved")
     void shouldCreditPaymentPayByAppDC() {
         var creditCardPage = dashboardPage.payByCreditCard();
-        var approvedCardInformation = DataHelper.getApprovedCardInfo();
+        var approvedCardInformation = DataHelper.getValidCard();
         creditCardPage.cardInfo(approvedCardInformation);
         creditCardPage.waitIfMessSuccess();
         var paymentStatus = SqlHelper.getCreditStatus();

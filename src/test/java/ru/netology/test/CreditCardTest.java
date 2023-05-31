@@ -9,6 +9,7 @@ import ru.netology.data.DataHelper;
 import ru.netology.page.DashboardPage;
 import ru.netology.data.SqlHelper;
 import static com.codeborne.selenide.Selenide.open;
+
 public class CreditCardTest {
 
     DashboardPage dashboardPage = new DashboardPage();
@@ -26,7 +27,7 @@ public class CreditCardTest {
     }
 
     @AfterAll
-    void tearDownAll() {
+    static void tearDownAll() {
         SelenideLogger.removeListener("allure");
         SqlHelper.cleanDataBase();
     }
