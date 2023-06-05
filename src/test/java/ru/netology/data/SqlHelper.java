@@ -9,7 +9,7 @@ public class SqlHelper {
 
     @SneakyThrows
     public static Connection getConn() {
-        var url = System.getProperty("url","jdbc:mysql://localhost:3306/app");
+        var url = System.getProperty("url");
         var username = System.getProperty("username");
         var password = System.getProperty("password");
         return DriverManager.getConnection(url, username, password);
@@ -36,9 +36,12 @@ public class SqlHelper {
         var countStmt = conn.createStatement();
         var paymentStatus = "SELECT status FROM payment_entity ORDER BY created DESC LIMIT 1;";
         var resultSet = countStmt.executeQuery(paymentStatus);
-        return resultSet.getString("status");
-
+        if (resultSet.next()) {
+            return resultSet.getString("status");
+        }
+        return "";
     }
+
 
     @SneakyThrows
     public static String getCreditStatus() {
@@ -46,7 +49,10 @@ public class SqlHelper {
         var countStmt = conn.createStatement();
         var creditStatus = "SELECT status FROM credit_request_entity ORDER BY created DESC LIMIT 1;";
         var resultSet = countStmt.executeQuery(creditStatus);
-        return resultSet.getString("status");
-
+        if (resultSet.next()) {
+            return resultSet.getString("status");
+        }
+        return "";
     }
+
 }
