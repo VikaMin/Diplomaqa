@@ -22,17 +22,15 @@
 
 **Результаты тестов проведенные для запуска приложения с MySQL**
 
-<img width="1253" alt="Снимок экрана 2023-05-31 225818" src="https://github.com/VikaMin/Diplomaqa/assets/36961768/181fc829-3631-4996-acd3-0af51a84ef01">
+<img width="1261" alt="MySQL_allurt_050623" src="https://github.com/VikaMin/Diplomaqa/assets/36961768/6ddd44ab-9654-4d38-81bf-1c76dcd93cf6">
 
-
-<img width="1259" alt="Снимок экрана 2023-05-31 232716" src="https://github.com/VikaMin/Diplomaqa/assets/36961768/3a4eb703-45e0-43d8-8f1c-02aa38277f91">
 
 <br></br>
 
-<!-- **Результаты тестов проведенные для запуска приложения с PostgreSQL** -->
+**Результаты тестов проведенные для запуска приложения с PostgreSQL**
 
 
-
+<img width="1256" alt="PostgreSQL_allurt_050623" src="https://github.com/VikaMin/Diplomaqa/assets/36961768/5322de63-8374-4f79-8fcf-b4516081436d">
 
 <br></br>
 **Найденные дефекты оформлены в** [Issue](https://github.com/VikaMin/Diplomaqa/issues).
